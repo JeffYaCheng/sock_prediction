@@ -3,10 +3,10 @@ from glob import glob
 import matplotlib.pyplot as plt
 #glob是一個檔名模式匹配(filename pattern matching)模組(Module)，用來定義檔案規則，取得相匹配的檔案清單串列(List)
 #讓我們在合併多個檔案資料的過程中，能夠一次取得所有的檔案清單，提升讀取效率
-files = glob(r'D:\111-1\machine_learning\make_change_rate_data/*.csv')
+files = glob(r'/home/mlb/users/jeffyacheng/course/exchage_rate/stock_prediction/*.csv')
 print("file length=",len(files))
 df = pd.concat(
-    (pd.read_csv(file, encoding='Big5', usecols=[r'日期',r'美元／新台幣',r'人民幣／新台幣'], dtype={ r'日期': str, r'美元／新台幣':str,r'人民幣／新台幣': str}) for file in files),ignore_index=True)
+    (pd.read_csv(file, encoding='Big5', usecols=[r'日期',r'美元／新台幣',r'人民幣／新台幣',r'美元／人民幣'], dtype={ r'日期': str, r'美元／新台幣':str,r'人民幣／新台幣': str}) for file in files),ignore_index=True)
 df.to_csv(f"exchage_rate.csv")
 print("df shape=",df.shape[0],df.shape[1])
 print(df.head())
